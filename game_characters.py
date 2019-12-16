@@ -37,15 +37,15 @@ class Perso:
         bow_d = random.randrange(1, self.bow)
         sword_d = random.randrange(1, self.sword)
         if magic_d >= bow_d and magic_d >= sword_d:
-            arm = "magic"
+            weapon = "magic"
             attack_point = magic_d
         elif bow_d >= magic_d and bow_d >= sword_d:
-            arm = "bow"
+            weapon = "bow"
             attack_point = bow_d
         elif sword_d >= magic_d and sword_d >= bow_d:
-            arm = "sword"
+            weapon = "sword"
             attack_point = sword_d
-        return arm, attack_point
+        return weapon, attack_point
 
 
 
