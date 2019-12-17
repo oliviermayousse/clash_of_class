@@ -37,15 +37,15 @@ class Perso:
         bow_d = random.randrange(1, self.bow)
         sword_d = random.randrange(1, self.sword)
         if magic_d >= bow_d and magic_d >= sword_d:
-            arm = "magic"
+            weapon = "magic"
             attack_point = magic_d
         elif bow_d >= magic_d and bow_d >= sword_d:
-            arm = "bow"
+            weapon = "bow"
             attack_point = bow_d
         elif sword_d >= magic_d and sword_d >= bow_d:
-            arm = "sword"
+            weapon = "sword"
             attack_point = sword_d
-        return arm, attack_point
+        return weapon, attack_point
 
 
 
@@ -93,14 +93,14 @@ class Archer(Perso):
 
 
     def attack(self):
-        arm, attack_point = super(Archer, self).attack()
-        if arm == "bow" or arm == "magic":
+        weapon, attack_point = super(Archer, self).attack()
+        if weapon == "bow" or weapon == "magic":
             attack_point += 1
-        if arm == "sword":
+        if weapon == "sword":
             attack_point += self.height//40
-        elif arm == "magic":
+        elif weapon == "magic":
             attack_point += self.weight//20
-        return arm, attack_point
+        return weapon, attack_point
 
 
 class Warrior(Perso):
@@ -110,24 +110,24 @@ class Warrior(Perso):
     sword = 12
 
     def attack(self):
-        arm, attack_points = super(Warrior, self).attack()
-        if arm == "magic":
+        weapon, attack_points = super(Warrior, self).attack()
+        if weapon == "magic":
             attack_points += self.weight//30
-        elif arm == "bow":
+        elif weapon == "bow":
             attack_points += (self.height - 170) % 3
-        return arm, attack_points
+        return weapon, attack_points
 
 class Dwarf:
-    def bonus(self, arm, attack_points):
-        if arm == "sword":
+    def bonus(self, weapon, attack_points):
+        if weapon == "sword":
             attack_points += 2
-        return arm, attack_points
+        return weapon, attack_points
 
 class Elf:
-    def bonus(self, arm, attack_points):
-        if arm == "bow":
+    def bonus(self, weapon, attack_points):
+        if weapon == "bow":
             attack_points += 2
-        return arm, attack_points
+        return weapon, attack_points
 
 class DwarfWizard(Wizard, Dwarf):
     pass
@@ -148,15 +148,15 @@ class ElfWarrior(Warrior, Elf):
     pass
 
 
-legolas = ElfArcher("legolas")
-gimli = ElfWarrior("gimli")
-gandalf = ElfWizard("Gandalf")
-
-merlin = Wizard("Merlin")
+# legolas = ElfArcher("legolas")
+# gimli = ElfWarrior("gimli")
+# gandalf = ElfWizard("Gandalf")
+#
+# merlin = Wizard("Merlin")
 
 
 #Attack 1 gandalf attack arthur:
-arm, points = gandalf.attack()
-print(gandalf, arm, points)
-legolas.defend(arm, points)
-print(legolas, legolas.current_life_point)
+# arm, points = gandalf.attack()
+# print(gandalf, arm, points)
+# legolas.defend(arm, points)
+# print(legolas, legolas.current_life_point)
